@@ -127,9 +127,13 @@ int main() {
     the_list->insert_back(c3);
     the_list->insert_back(c4);
 
+    std::cout << "Initial push back: ";
     the_list->display_forward();
 
     the_list->delete_front();
     the_list->insert_front(c5);
+    std::cout << "Replacing 1st elem by deleting and inserting front: ";
     the_list->display_forward();
+    std::cout << "Displaying backward: ";
+    the_list->display_backward();
 }
