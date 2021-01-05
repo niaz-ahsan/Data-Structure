@@ -4,6 +4,9 @@ template<typename T>
 class Node {
 public:
     Node(T data) : _data(data), _next(nullptr) {}
+    ~Node() {
+        delete _next;
+    }
     void set_next(Node *next) {
         _next = next;
     }
@@ -21,6 +24,10 @@ template<typename T>
 class Linked_list {
 public:
     Linked_list() : _head(nullptr), _tail(nullptr) {}
+    ~Linked_list() {
+        delete _head;
+        delete _tail;
+    }
     
     // pushes Node<T> at the end
     void push(Node<T> *node) {
@@ -44,6 +51,30 @@ public:
         }
     }
 
+    bool search(T search_for) {
+        if(_head == nullptr) {
+            return false;
+        }
+        bool found = false;
+        Node<T> *present_node = _head;
+        while(present_node->get_next() != nullptr) {
+            Node<T> *next_node = present_node->get_next();
+            if(present_node == _head) {
+                if(present_node->get_data() == search_for || next_node->get_data() == search_for) {
+                    found = true;
+                    break;
+                }
+            } else {
+                if (next_node->get_data() == search_for) {
+                    found = true;
+                    break;
+                }
+            }
+            present_node = next_node;
+        }
+        return found;
+    }
+
     void print() {
         if(_head != nullptr) {
             Node<T> *present_node = _head;
@@ -65,19 +96,25 @@ int main() {
     Node<int> *n1 = new Node<int>(4);
     Node<int> *n2 = new Node<int>(67);
     Node<int> *n3 = new Node<int>(25);
+    Node<int> *n4 = new Node<int>(100); 
 
     Linked_list<int> *linked_list = new Linked_list<int>();
+    // Pushing 
     linked_list->push(n1);
     linked_list->push(n2);
     linked_list->push(n3);
+    linked_list->push(n4);
+    std::cout << "After pushing: ";
     linked_list->print();
 
+    // Searching
+    std::cout << "Searching 4: " << linked_list->search(4) << std::endl;
+
+    //Popping
     linked_list->pop();
+    std::cout << "After one pop op: ";
     linked_list->print();
 
-
-    delete linked_list;
-    delete n1;
-    delete n2;
-    delete n3;     
+    // Searching again
+    std::cout << "Searching 4: " << linked_list->search(4) << std::endl;    
 }
