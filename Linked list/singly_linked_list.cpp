@@ -85,7 +85,7 @@ public:
             std::cout << present_node->get_data() << " -> ";
             std::cout << std::endl;
         } else {
-            std::cout << "No item in Linked List" << std::endl;
+            std::cout << "No item in Linked List" << std::endl; 
         }
     }
 private:
