@@ -82,7 +82,7 @@ public:
                 present_node->print();
                 present_node = present_node->get_next();
             }
-            std::cout << present_node->get_data() << " -> ";
+            present_node->print();
             std::cout << std::endl;
         } else {
             std::cout << "No item in Linked List" << std::endl; 
