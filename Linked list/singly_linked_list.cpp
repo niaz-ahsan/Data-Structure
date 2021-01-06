@@ -1,3 +1,7 @@
+// Authored by: Niaz
+// On 3 Jan 21
+// Implementation of a Singly Linked List using dynamic memory
+
 #include <iostream>
 
 template<typename T>
