@@ -1,3 +1,7 @@
+// Authored by: Niaz
+// On 5 Jan 21
+// Implementation of a Doubly Linked List using dynamic memory
+
 #include <iostream>
 
 template<typename T>
