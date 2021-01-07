@@ -33,7 +33,7 @@ private:
 template <typename T>
 class Stack {
 public:
-    Stack(int l) : _node(nullptr), _ptr(nullptr), _limit(l) {}
+    Stack(int l) : _node(nullptr), _ptr(nullptr), _limit(l), _count(0) {}
     ~Stack() { 
         delete _node;  
         if(_ptr != nullptr) {
@@ -93,7 +93,7 @@ private:
     Node<T> *_node;
     Node<T> *_ptr;  // to point at head 
     int _limit; 
-    int _count = 0;
+    int _count;
     void generate_node(T data) {
         _node = new Node<T>(data);
     }
@@ -106,7 +106,9 @@ int main() {
     my_stack->push(9);
     my_stack->push(11);
     my_stack->push(15);
-    //my_stack->push(19);
+    my_stack->push(19);
+
+    my_stack->display();
 
     my_stack->pop();
     my_stack->pop();
