@@ -1,3 +1,7 @@
+// Authored by: Niaz
+// On 7 Jan 21
+// Implementation of a Stack using Doubly Linked List
+
 #include <iostream>
 
 template<typename T>
