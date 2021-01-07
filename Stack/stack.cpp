@@ -64,19 +64,23 @@ public:
     // pops from top
     T pop() {
         if(_ptr == nullptr) {
-            std::cout << "No item in the stack" << std::endl;
+            std::cout << "Pop: No item in the stack" << std::endl;
             return 0;
         } 
 
         Node<T> *temp = _ptr;
-        _ptr = _ptr->get_next();
-        _ptr->set_prev(nullptr);
+        if(_ptr->get_next() != nullptr) {
+            _ptr = _ptr->get_next();
+            _ptr->set_prev(nullptr);
+        } else {
+            _ptr = nullptr;
+        }
         return temp->get_data();
     }
 
     void display() {
         if(_ptr == nullptr) {
-            std::cout << "No item in the stack" << std::endl;
+            std::cout << "Display: No item in the stack" << std::endl;
             return;
         } 
 
@@ -106,10 +110,14 @@ int main() {
     my_stack->push(9);
     my_stack->push(11);
     my_stack->push(15);
-    my_stack->push(19);
+    my_stack->push(19); // Operation shouldn't be successful
 
     my_stack->display();
 
+    my_stack->pop();
+    my_stack->pop();
+    my_stack->pop();
+    my_stack->pop();
     my_stack->pop();
     my_stack->pop();
 
