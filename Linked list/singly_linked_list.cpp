@@ -51,7 +51,7 @@ public:
         if(_head != nullptr) {
             _head = _head->get_next();
         } else {
-            std::cout << "No more element in your linked list!";
+            std::cout << "Pop: No more element in your linked list!" << std::endl;
         }
     }
 
@@ -89,7 +89,7 @@ public:
             present_node->print();
             std::cout << std::endl;
         } else {
-            std::cout << "No item in Linked List" << std::endl; 
+            std::cout << "print: No item in Linked List" << std::endl; 
         }
     }
 private:
@@ -116,7 +116,11 @@ int main() {
 
     //Popping
     linked_list->pop();
-    std::cout << "After one pop op: ";
+    linked_list->pop();
+    linked_list->pop();
+    linked_list->pop();
+    linked_list->pop();
+    std::cout << "After pop op: ";
     linked_list->print();
 
     // Searching again
