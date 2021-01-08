@@ -35,8 +35,12 @@ class Doubly_Linked_List {
 public:
     Doubly_Linked_List() : _head(nullptr), _tail(nullptr) {}
     ~Doubly_Linked_List() {
-        delete _head;
-        delete _tail;
+        if(_head != nullptr) {
+            delete _head;
+        } 
+        if(_tail != nullptr) {
+            delete _tail;
+        }
     }
 
     void insert_front(Node<T> *node) {
@@ -71,8 +75,14 @@ public:
             std::cout << "No more item in the list!" << std::endl;
         } else {
             // list not empty
-            _head = _head->get_next();
-            _head->set_prev(nullptr);
+            if(_head->get_next() != nullptr) {
+                _head = _head->get_next();
+                _head->set_prev(nullptr);
+            } else {
+                // list has gone empty
+                _head = nullptr;
+                _tail = nullptr;
+            }
         }
     }
 
@@ -82,8 +92,14 @@ public:
             std::cout << "No more item in the list!" << std::endl;
         } else {
             // list not empty
-            _tail = _tail->get_prev();
-            _tail->set_next(nullptr);
+            if(_tail->get_prev() != nullptr) {
+                _tail = _tail->get_prev();
+                _tail->set_next(nullptr);
+            } else {
+                // list has gone empty
+                _tail = nullptr;
+                _head = nullptr;
+            }
         }
     }
 
@@ -139,5 +155,5 @@ int main() {
     std::cout << "Replacing 1st elem by deleting and inserting front: ";
     the_list->display_forward();
     std::cout << "Displaying backward: ";
-    the_list->display_backward();
+    the_list->display_backward(); 
 }
