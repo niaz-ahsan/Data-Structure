@@ -6,4 +6,4 @@ set(CMAKE_CXX_STANDARD 17)
 project("undirected_graph") 
 
 # Compiling all files inside "src" dir
-add_executable(${PROJECT_NAME} src/main.cpp src/person.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp src/person.cpp src/graph.cpp)

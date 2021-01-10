@@ -5,11 +5,9 @@
 
 class Person {
 public:
+    Person(){}
     Person(std::string &&n) : _name(&n), _address(nullptr) {}
-    ~Person() {
-        delete _name;
-        delete _address;
-    }
+    ~Person() {}
 
     void set_name(std::string *name); 
     void set_address(std::string *address);
