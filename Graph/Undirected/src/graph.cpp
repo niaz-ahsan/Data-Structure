@@ -5,8 +5,9 @@
 
 template<typename T>
 void Graph<T>::load_matrix() {
+     std::vector<int> inner;
     for(int i=0; i<_nodes.size(); i++) {
-        std::vector<int> inner;
+        inner.clear();
         for(int j=0; j<_nodes.size(); j++) {
             inner.push_back(0);
         }
@@ -19,14 +20,16 @@ void Graph<T>::add_node(T *node) {
     if(_nodes.size() <= _limit) {
         _nodes.push_back(*node);
     }
-    //load_matrix();
-    //print_graph();
 }
 
 template<typename T>
 void Graph<T>::add_edge(T *src_node, T *des_node) {
     int row = find_index(src_node);
     int col = find_index(des_node);
+    if(row == col) {
+        _inner_matrix[row][col] = 1;
+        return;
+    }
     _inner_matrix[row][col] = 1;
     _inner_matrix[col][row] = 1; // both of the cell connected as this is undirected
 }
@@ -35,8 +38,12 @@ template<typename T>
 void Graph<T>::remove_edge(T *src_node, T *des_node) {
     int row = find_index(src_node);
     int col = find_index(des_node);
+    if(row == col) {
+        _inner_matrix[row][col] = 0;
+        return;
+    }
     _inner_matrix[row][col] = 0;
-    _inner_matrix[col][row] = 0;
+    _inner_matrix[col][row] = 0; // both of the cell connected as this is undirected
 }
 
 template<typename T>
@@ -89,7 +96,12 @@ void Graph<T>::print_graph() {
                     std::cout << " | ";
                 }
             } else {
-                std::cout << _inner_matrix[i][j-1];
+                //std::cout << _inner_matrix[i][j-1];
+                if(_inner_matrix[i][j-1] == 1) {
+                    std::cout << "#";
+                } else {
+                    std::cout << " ";
+                }
                 std::string name = _nodes[j-1].get_name();
                 set_whitespace(name.length());    
                 std::cout << "| ";

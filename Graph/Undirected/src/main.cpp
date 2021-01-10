@@ -5,23 +5,24 @@
 #include "graph.cpp"
 
 int main() {
-    Person *niaz = new Person("Niaz Ahsan");
-    Person *babu = new Person("Noor Babu");
-    Person *sakib = new Person("A S M Muntaheen");
-    Person *khadija = new Person("Khadija Siddiqua");
+    Person *john = new Person("John Doe");
+    Person *steve = new Person("Steve Smith");
+    Person *marco = new Person("Marco Polo");
+    Person *ethan = new Person("Ethan Sarina");
 
     Graph<Person> *graph = new Graph<Person>(5);
-    graph->add_node(niaz);
-    graph->add_node(babu);
-    graph->add_node(sakib);
-    graph->add_node(khadija);
+    graph->add_node(john);
+    graph->add_node(steve);
+    graph->add_node(marco);
+    graph->add_node(ethan);
 
     graph->load_matrix();
 
-    graph->add_edge(niaz, babu);
-    graph->add_edge(babu, sakib);
-    graph->add_edge(niaz, sakib);
-    graph->add_edge(niaz, khadija);
+    graph->add_edge(john, marco);
+    graph->add_edge(steve, ethan);
+    graph->add_edge(marco, ethan);
+    graph->add_edge(john, steve);
+    graph->add_edge(john, john);
 
     //graph->remove_edge(babu, sakib);
 
