@@ -14,6 +14,9 @@ public:
 
     std::string get_name();
     std::string get_address();
+    bool operator==(Person p) {
+        return get_name() == p.get_name();
+    }
 private:
     std::string *_name;
     std::string *_address;    

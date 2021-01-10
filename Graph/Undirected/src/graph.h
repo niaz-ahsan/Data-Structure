@@ -2,6 +2,7 @@
 #define GRAPH_H
 
 #include <vector>
+#include <string>
 
 template<typename T>
 class Graph {
@@ -13,12 +14,6 @@ public:
     void add_edge(T*, T*);
     void remove_edge(T*, T*);
     void print_graph();
-
-    /*void add_node(T *node) {
-        if(_nodes.size() <= _limit) {
-            _nodes.push_back(*node);
-        }
-    }*/
 private:
     int _limit;
     std::vector<T> _nodes;

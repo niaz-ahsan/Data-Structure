@@ -14,6 +14,11 @@ int main() {
     graph->add_node(babu);
     graph->add_node(sakib);
 
+    graph->add_edge(niaz, babu);
+    graph->add_edge(babu, sakib);
+    graph->add_edge(niaz, sakib);
+
+    graph->print_graph();
 
     return 0;
 }
