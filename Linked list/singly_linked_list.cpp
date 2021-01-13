@@ -109,6 +109,21 @@ public:
         }
     }
 
+    int get_length() {
+        if(is_empty()) {
+            return 0;
+        } 
+
+        int counter = 0;
+        Node<T> *current_node = _head;
+        while(current_node->get_next() != nullptr) {
+            counter++;
+            current_node = current_node->get_next();
+        }
+        counter++;
+        return counter;
+    }
+
     bool is_empty() {
         return (_head == nullptr);
     }
@@ -145,21 +160,18 @@ int main() {
     std::cout << "After pushing: ";
     linked_list->print();
 
-    linked_list->delete_node(100);
-    linked_list->print();
-
     // Searching
-    /*std::cout << "Searching 4: " << linked_list->search(4) << std::endl;
+    std::cout << "Searching 4: " << linked_list->search(4) << std::endl;
 
     //Popping
-    linked_list->pop();
-    linked_list->pop();
-    linked_list->pop();
-    linked_list->pop();
-    linked_list->pop();
-    std::cout << "After pop op: ";
+    linked_list->delete_at_head();
+    linked_list->delete_at_head();
+    linked_list->delete_at_head();
+    linked_list->delete_at_head();
+    linked_list->delete_at_head();
+    std::cout << "After delete op: ";
     linked_list->print();
 
     // Searching again
-    std::cout << "Searching 4: " << linked_list->search(4) << std::endl;    */
+    std::cout << "Searching 4: " << linked_list->search(4) << std::endl;    
 }
