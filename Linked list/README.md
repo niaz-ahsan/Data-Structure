@@ -11,6 +11,7 @@
 - `void delete_node(T)`
 - `bool is_empty()`
 - `int get_length()`
+- `void reverse()`
 - `void print()`
 
 <br/>

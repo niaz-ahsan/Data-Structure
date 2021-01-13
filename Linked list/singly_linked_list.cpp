@@ -61,6 +61,21 @@ public:
         }
     }
 
+    void reverse() {
+        Node<T> *prev_node = nullptr;
+        Node<T> *current_node = _head;
+        Node<T> *next_node = nullptr;
+
+        while(current_node != nullptr) {
+            next_node = current_node->get_next();
+            current_node->set_next(prev_node);
+            prev_node = current_node;
+            current_node = next_node;
+        }
+
+        _head = prev_node;
+    }
+
     bool search(T search_for) {
         if(is_empty()) {
             return false;
