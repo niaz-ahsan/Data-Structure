@@ -33,11 +33,8 @@ public:
         delete _tail;
     }
     
-    // pushes Node<T> at the end
-    void push(Node<T> *node) {
-        // if head is nullptr set node as head and tail
-        // else connect tail's next ptr to this node
-        if(_head == nullptr) {
+    void insert_at_tail(Node<T> *node) {
+        if(is_empty()) {
             _head = node;
             _tail = node;
         } else {
@@ -46,25 +43,34 @@ public:
         }
     }
 
-    // pops the first element
-    void pop() {
-        if(_head != nullptr) {
+    void insert_at_head(Node<T> *node) {
+        if(is_empty()) {
+            _head = node;
+            _tail = node;
+        } else {
+            node->set_next(_head);
+            _head = node;
+        }
+    }
+
+    void delete_at_head() {
+        if(!is_empty()) {
             _head = _head->get_next();
         } else {
-            std::cout << "Pop: No more element in your linked list!" << std::endl;
+            std::cout << "del_at_head: No more element in your linked list!" << std::endl;
         }
     }
 
     bool search(T search_for) {
-        if(_head == nullptr) {
+        if(is_empty()) {
             return false;
         }
         bool found = false;
-        Node<T> *present_node = _head;
-        while(present_node->get_next() != nullptr) {
-            Node<T> *next_node = present_node->get_next();
-            if(present_node == _head) {
-                if(present_node->get_data() == search_for || next_node->get_data() == search_for) {
+        Node<T> *current_node = _head;
+        while(current_node->get_next() != nullptr) {
+            Node<T> *next_node = current_node->get_next();
+            if(current_node == _head) {
+                if(current_node->get_data() == search_for || next_node->get_data() == search_for) {
                     found = true;
                     break;
                 }
@@ -74,9 +80,37 @@ public:
                     break;
                 }
             }
-            present_node = next_node;
+            current_node = next_node;
         }
         return found;
+    }
+
+    void delete_node(T to_delete) {
+        if(is_empty()) {
+            std::cout << "Delete: No element to delete" << std::endl;
+            return;
+        }    
+
+        if(_head->get_data() == to_delete) {
+            _head = _head->get_next();
+        } else {
+            Node<T> *current_node = _head;
+            Node<T> *next_node = _head->get_next();
+
+            while(next_node != nullptr) {
+                if(next_node->get_data() == to_delete) {
+                    current_node->set_next(next_node->get_next());
+                    break;
+                } else {
+                    current_node = next_node;
+                    next_node = next_node->get_next();
+                }
+            }
+        }
+    }
+
+    bool is_empty() {
+        return (_head == nullptr);
     }
 
     void print() {
@@ -104,15 +138,18 @@ int main() {
 
     Linked_list<int> *linked_list = new Linked_list<int>();
     // Pushing 
-    linked_list->push(n1);
-    linked_list->push(n2);
-    linked_list->push(n3);
-    linked_list->push(n4);
+    linked_list->insert_at_head(n1);
+    linked_list->insert_at_head(n2);
+    linked_list->insert_at_head(n3);
+    linked_list->insert_at_head(n4);
     std::cout << "After pushing: ";
     linked_list->print();
 
+    linked_list->delete_node(100);
+    linked_list->print();
+
     // Searching
-    std::cout << "Searching 4: " << linked_list->search(4) << std::endl;
+    /*std::cout << "Searching 4: " << linked_list->search(4) << std::endl;
 
     //Popping
     linked_list->pop();
@@ -124,5 +161,5 @@ int main() {
     linked_list->print();
 
     // Searching again
-    std::cout << "Searching 4: " << linked_list->search(4) << std::endl;    
+    std::cout << "Searching 4: " << linked_list->search(4) << std::endl;    */
 }
