@@ -124,6 +124,28 @@ public:
         }
     }
 
+    bool detect_loop() {
+        // following hare and tortoise algorithm
+        Node<T> *hare = _head;
+        Node<T> *tortoise = _head;
+
+        while(hare && tortoise) {
+            hare = hare->get_next();
+            Node<T> *temp = tortoise->get_next();
+            if(temp && temp->get_next()) {
+                tortoise = temp->get_next();
+            } else {
+                return false;
+            }
+            
+            if(tortoise == hare) {
+                return true;
+            }            
+        }
+
+        return false;
+    }
+
     int get_length() {
         if(is_empty()) {
             return 0;
@@ -172,11 +194,14 @@ int main() {
     linked_list->insert_at_head(n2);
     linked_list->insert_at_head(n3);
     linked_list->insert_at_head(n4);
-    std::cout << "After pushing: ";
-    linked_list->print();
+    linked_list->insert_at_head(n2);
+
+    std::cout << linked_list->detect_loop() << std::endl;
+    //std::cout << "After pushing: ";
+    //linked_list->print();
 
     // Searching
-    std::cout << "Searching 4: " << linked_list->search(4) << std::endl;
+    /*std::cout << "Searching 4: " << linked_list->search(4) << std::endl;
 
     //Popping
     linked_list->delete_at_head();
@@ -188,5 +213,5 @@ int main() {
     linked_list->print();
 
     // Searching again
-    std::cout << "Searching 4: " << linked_list->search(4) << std::endl;    
+    std::cout << "Searching 4: " << linked_list->search(4) << std::endl;    */
 }

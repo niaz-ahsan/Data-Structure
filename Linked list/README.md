@@ -12,6 +12,7 @@
 - `bool is_empty()`
 - `int get_length()`
 - `void reverse()`
+- `bool detect_loop()`
 - `void print()`
 
 <br/>
