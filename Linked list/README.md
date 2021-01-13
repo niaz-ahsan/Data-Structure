@@ -10,6 +10,7 @@
 - `bool search(T)`
 - `void delete_node(T)`
 - `bool is_empty()`
+- `int get_length()`
 - `void print()`
 
 <br/>
