@@ -33,3 +33,8 @@ int Graph<T>::look_for_head(T data) {
 
     return -1;
 }
+
+template<typename T>
+void Graph<T>::print() {
+    std::cout << _lists[0]->get_head_data() << std::endl;
+}
