@@ -21,19 +21,20 @@ private:
 template<typename T>
 class Linked_List {
 public:
-    Linked_List() : _head(nullptr) {}
+    Linked_List() : _head(nullptr), _tail(nullptr) {}
     ~Linked_List() {
         delete _head;
         delete _tail;
     }
 
-    void push(T*);
+    void push(Node<T>*);
     void remove(T);
+    T get_head_data();
     bool is_empty() {
         return (_head == nullptr);
     }
 private:
-    T *_head, *_tail;    
+    Node<T> *_head, *_tail;    
 };
 
 #endif

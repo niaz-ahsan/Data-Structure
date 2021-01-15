@@ -1,7 +1,8 @@
 #include "linked_list.h"
+#include <iostream>
 
 template<typename T>
-void Linked_List<T>::push(T *node) {
+void Linked_List<T>::push(Node<T> *node) {
     if(is_empty()) {
         _head = node;
         _tail = node;
@@ -34,4 +35,9 @@ void Linked_List<T>::remove(T to_delete) {
             }
         }
     }
+}
+
+template<typename T>
+T Linked_List<T>::get_head_data() {
+    return _head->get_data();
 }
