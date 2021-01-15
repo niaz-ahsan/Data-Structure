@@ -19,7 +19,15 @@
 <br/>
 <br/>
 
-Doubly Linked List:<br/>
+### Doubly Linked List:<br/>
 <img src="https://cdn.softwaretestinghelp.com/wp-content/qa/uploads/2019/06/A-basic-layout-of-the-doubly-linked-list.png" alt="Doubly LL" />
+
+### Available Methods
+- `void insert_front(Node<T>*)`
+- `void insert_back(Node<T>*)`
+- `void delete_front()`
+- `void delete_back()`
+- `void display_forward()`
+- `void display_backward() `
 
 
