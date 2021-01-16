@@ -30,6 +30,7 @@ public:
     void push(Node<T>*);
     void remove(T);
     T get_head_data();
+    void print_list();
     bool is_empty() {
         return (_head == nullptr);
     }

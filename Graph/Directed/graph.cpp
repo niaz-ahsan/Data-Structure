@@ -36,5 +36,8 @@ int Graph<T>::look_for_head(T data) {
 
 template<typename T>
 void Graph<T>::print() {
-    std::cout << _lists[0]->get_head_data() << std::endl;
+    //std::cout << _lists[0]->get_head_data() << std::endl;
+    for(Linked_List<T> *list : _lists) {
+        list->print_list();
+    }
 }

@@ -41,3 +41,21 @@ template<typename T>
 T Linked_List<T>::get_head_data() {
     return _head->get_data();
 }
+
+template<typename T> 
+void Linked_List<T>::print_list() {
+    if(is_empty()) {
+        std::cout << "Delete: No element to delete" << std::endl;
+        return;
+    } 
+    Node<T> *current_node = _head;
+    while(current_node->get_next() != nullptr) {
+        if(current_node == _head) {
+            std::cout << "[" << current_node->get_data() << "] => ";
+        } else {
+            std::cout << current_node->get_data() << " -> ";
+        }
+        current_node = current_node->get_next();
+    }
+    std::cout << current_node->get_data() << std::endl;
+}
