@@ -1,5 +1,5 @@
 ## Directed Graph
-Implementation of a Directed Generic Graph where user can add generic vertices and add connection between vertices. The graph is designed and represented by <b>Adjacency List</b>. 
+Implementation of a Directed Generic Graph where user can add generic vertices and edges with direction among vertices. The graph is designed and represented by <b>Adjacency List</b>. 
 
 ### What to expect
 Graph that has been implemented 
