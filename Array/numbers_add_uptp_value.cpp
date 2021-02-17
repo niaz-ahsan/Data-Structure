@@ -1,3 +1,5 @@
+// Solving problem using Hash set for constant lookup
+
 #include <iostream>
 #include <unordered_set>
 
