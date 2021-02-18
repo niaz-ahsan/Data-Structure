@@ -20,7 +20,7 @@ void display_result(int *p, int size) {
 }
 
 int main() {
-    int arr[] = {1,2,3,4};
+    int arr[] = {1,3,4,5};
     int *p = find_product(arr, 4);
     display_result(p, 4);
     return 0;
