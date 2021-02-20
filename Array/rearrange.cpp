@@ -7,6 +7,8 @@ void swap(int &a, int &b) {
 }
 
 void re_arrange(int *arr, int size) {
+    // Putting all negative numbers on left side and all positive on right side
+    // Order isn't important
     int negative_number_index = 0;
     for(int i = 0; i < size; i++) {
         if(arr[i] < 0) {
